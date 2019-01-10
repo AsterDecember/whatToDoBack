@@ -5,7 +5,7 @@ const User = require('../models/User')
 
 //
 
-router.post('/books',(req,res,next)=>{
+router.post('/event',(req,res,next)=>{
     Events.create({
         name: req.body.name,
         year: req.body.year,
@@ -20,7 +20,7 @@ router.post('/books',(req,res,next)=>{
         .catch(e=> res.json(e))
 })
 
-router.get('/books/:id',(req,res,next)=>{
+router.get('/event/:id',(req,res,next)=>{
     const {id} = req.params
     Events.find({user:id})
         .then(response => res.json(response))
@@ -35,7 +35,7 @@ router.get('/books/:id',(req,res,next)=>{
 })*/
 
 
-router.delete('/books/:id',(req,res,next)=>{
+router.delete('/event/:id',(req,res,next)=>{
     const {id} = req.params
     Book.findByIdAndRemove(id)
         .then(response => res.json({message: "Libro eliminado"}))
