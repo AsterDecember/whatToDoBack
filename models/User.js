@@ -8,6 +8,12 @@ const userSchema = new Schema({
             type: String,
             unique:true
         },
+        events: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Event'
+            }
+        ],
     },
     {
         timestamps:{
