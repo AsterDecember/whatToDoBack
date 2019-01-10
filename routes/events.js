@@ -12,10 +12,10 @@ router.post('/event',(req,res,next)=>{
         start: req.body.start,
         name: req.body.name,
         description: req.body.description,
-        user: req.body.user
+        user: req.body.user.id
     })
         .then(response => {
-            User.findByIdAndUpdate(req.body.user,{$push:{events:response._id}})
+            User.findByIdAndUpdate(req.body.user.id,{$push:{events:response._id}})
                 .then(response => res.json(response))
 
         })
