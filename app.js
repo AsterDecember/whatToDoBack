@@ -72,7 +72,7 @@ app.locals.title = 'Auth Mike Api';
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3001']
+  origin: ['http://localhost:3000','http://localhost:3001','https://floating-plains-96602.herokuapp.com/']
 }))
 
 const index = require('./routes/index');
