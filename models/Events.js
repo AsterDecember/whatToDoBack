@@ -6,6 +6,7 @@ const eventSchema = new Schema({
         name: String,
         url: String,
         start: String,
+        description: String,
         user:
             {
                 type: Schema.Types.ObjectId,

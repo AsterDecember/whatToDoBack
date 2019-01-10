@@ -7,10 +7,12 @@ const User = require('../models/User')
 
 router.post('/event',(req,res,next)=>{
     Events.create({
+        id: req.body.id,
+        url: req.body.url,
+        start: req.body.start,
         name: req.body.name,
-        year: req.body.year,
         description: req.body.description,
-        author: req.body.author
+        user: req.body.user
     })
         .then(response => {
             User.findByIdAndUpdate(req.body.user,{$push:{events:response._id}})
