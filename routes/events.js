@@ -15,13 +15,14 @@ router.post('/event',(req,res,next)=>{
         user: req.body.user.id
     })
         .then(response => {
-            User.findByIdAndUpdate(req.body.user.id,{$push:{events:response._id}})
-                .then(response => res.json(response))
-                .catch(e=> res.json(e))
-
+            User.findByIdAndUpdate(req.body.user._id,{$push:{events:response._id}})
+                .then(response =>{
+                    return res.json(response)})
+                .catch(e=>next(e))
         })
         .catch(e=> res.json(e))
 })
+
 
 router.get('/event/:id',(req,res,next)=>{
     const {id} = req.params
@@ -29,13 +30,6 @@ router.get('/event/:id',(req,res,next)=>{
         .then(response => res.json(response))
         .catch(e => res.json(e))
 })
-
-/*router.get('/books/:id',(req,res,next)=>{
-    const {id} = req.params
-    Book.findById(id)
-        .then(response => res.json(response))
-        .catch(e => res.json(e))
-})*/
 
 
 router.delete('/event/:id',(req,res,next)=>{
